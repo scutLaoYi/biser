@@ -95,7 +95,7 @@ class SiteController extends Controller
         $rssParser = new RssParser();
         $rssParser->load('http://www.scutlaoyi.tk/feeds/all.rss.xml');
             return $this->render('about', [
-                'test_rss' => json_encode($rssParser->getRSS()),
+                'test_rss' => $rssParser->getItems(false, 2),
             ]);
     }
 }
