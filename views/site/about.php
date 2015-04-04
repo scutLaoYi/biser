@@ -12,5 +12,5 @@ $this->params['breadcrumbs'][] = $this->title;
         This is the About page. I'm testing the rss parser now.
     </p>
 
-    <p> <?php echo $test_rss;?> </p>
+     <?= Html::encode( $test_rss);?> 
 </div>

@@ -74,7 +74,7 @@ class RssParser extends \yii\base\Object {
 			$this->document = array();
 			$this->channel = array();
 			$this->items = array();
-			$DOMDocument = new DOMDocument;
+			$DOMDocument = new \DOMDocument;
 			$DOMDocument->strictErrorChecking = false;
 			$DOMDocument->loadXML($rss);
 			$this->document = $this->extractDOM($DOMDocument->childNodes);

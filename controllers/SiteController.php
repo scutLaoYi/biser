@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use app\models\RssParser;
 use app\models\ContactForm;
 
 class SiteController extends Controller
@@ -92,7 +93,7 @@ class SiteController extends Controller
     public function actionAbout()
     {
         $rssParser = new RssParser();
-        $rssParser->load('http://www.scutlaoyi.tk/feeds/all.rss.xml')
+        $rssParser->load('http://www.scutlaoyi.tk/feeds/all.rss.xml');
             return $this->render('about', [
                 'test_rss' => json_encode($rssParser->getRSS()),
             ]);
