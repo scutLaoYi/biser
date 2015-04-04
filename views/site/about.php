@@ -9,8 +9,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        This is the About page. You may modify the following file to customize its content:
+        This is the About page. I'm testing the rss parser now.
     </p>
 
-    <code><?= __FILE__ ?></code>
+    <p> <?php echo $test_rss;?> </p>
 </div>

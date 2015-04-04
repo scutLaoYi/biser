@@ -11,8 +11,9 @@
 	Examples:
 		Can be found online at http://rssphp.net/examples
 */
+namespace app\models;
 
-class rss_php {
+class RssParser extends \yii\base\Object {
 	
 	public $document;
 	public $channel;
