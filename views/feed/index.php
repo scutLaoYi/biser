@@ -12,17 +12,24 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="feed-index">
 
-    <h1><?= Html::encode($this->title.':'.$model->title) ?></h1>
 
-    <p>
-        <?= Html::a('Add Feed', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
+    <div class="col-md-2" >
+        <h1><?= Html::encode('订阅列表') ?><h1>
+<?php
+foreach ($postList as $post) {
+    echo Html::a($post['name'], ['index?post_id='.$post['id']]);
+    echo '<br>';
+}
+?>
+    </div>
+    <div class="col-md-10" >
+    <h1><?= Html::encode($model->title) ?></h1>
 <?php
         echo $model->content;
         echo LinkPager::widget([
             'pagination'=>$pages,
         ]);
 ?>
+    </div>
 
 </div>

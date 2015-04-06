@@ -34,14 +34,24 @@ class FeedController extends Controller
     public function actionIndex($post_id = null)
     {
         $postList = [];
+        $existID = false;
+        $post_name = null;
         foreach (Post::find()->all() as $post) {
             $postList[] = [
                 'id' => $post->id,
                 'name' => $post->name,
                 ];
+            if ($post->id == $post_id) {
+                $existID = true;
+                $post_name = $post->name;
+            }
+        }
+        if (!$existID) {
+            $post_id = $postList[0]['id'];
+            $post_name = $postList[0]['name'];
         }
 
-        $query = Record::find()->where(['post_id'=>$postList[0]['id']]);
+        $query = Record::find()->where(['post_id'=>$post_id]);
         $countQuery = clone $query;
         $pages = new Pagination(['totalCount'=>$countQuery->count()]);
         $pages->pageSize = 1;
@@ -52,7 +62,7 @@ class FeedController extends Controller
             'model' => $models,
             'postList' => $postList,
             'pages' => $pages,
-            'postTitle' => $postList[0]['name'],
+            'postTitle' => $post_name,
         ]);
     }
 
