@@ -38,12 +38,20 @@ AppAsset::register($this);
                     ['label' => 'Home', 'url' => ['/site/index']],
                     ['label' => 'Login', 'url' => ['/site/login']],
                     ];
-            } else {
+            } else if (Yii::$app->user->identity->isAdmin()) {
                 $items = [
                     ['label' => 'Home', 'url' => ['/site/index']],
                     ['label' => 'Post', 'url' => ['/post']],
                     ['label' => 'Flag', 'url' => ['/flag']],
                     ['label' => 'User', 'url' => ['/user']],
+                    ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                        'url' => ['/site/logout'],
+                        'linkOptions' => ['data-method' => 'post']],
+                    ];
+            } else {
+                $items = [
+                    ['label' => 'Home', 'url' => ['/site/index']],
+                    ['label' => 'Post', 'url' => ['/post']],
                     ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                         'url' => ['/site/logout'],
                         'linkOptions' => ['data-method' => 'post']],
