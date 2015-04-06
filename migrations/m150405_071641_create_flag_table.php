@@ -10,7 +10,7 @@ class m150405_071641_create_flag_table extends Migration
         $this->createTable('flags', [
             'id'=>'pk',
             'name'=>'string UNIQUE',
-            ]);
+            ], 'CHARSET=utf8');
 
     }
 

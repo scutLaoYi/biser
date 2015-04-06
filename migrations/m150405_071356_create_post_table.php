@@ -13,7 +13,7 @@ class m150405_071356_create_post_table extends Migration
             'type'=>'integer',
             'url'=>'string',
             'type_id'=>'integer'
-            ]);
+            ], 'CHARSET=utf8');
 
     }
 

@@ -12,7 +12,7 @@ class m150405_071331_create_post_record_table extends Migration
             'title'=>'string UNIQUE',
             'content'=>'text',
             'post_id'=>'integer'
-            ]);
+            ],  'CHARSET=utf8');
 
     }
 

@@ -12,7 +12,7 @@ class m150405_070312_create_user_table extends Migration
             'username'=>'string UNIQUE',
             'password'=>'string',
             'email'=>'string'
-            ]);
+            ], 'CHARSET=utf8');
 
     }
 
