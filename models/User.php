@@ -80,6 +80,10 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
         return false;
     }
 
+    private function hashPassword($username, $password) {
+        return md5($username.$password);
+    }
+
     /**
      * Validates password
      *
@@ -88,7 +92,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
      */
     public function validatePassword($password)
     {
-        return $this->password === $password;
+        return $this->password === $this->hashPassword($this->username, $password);
     }
 
     /**

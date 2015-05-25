@@ -33,6 +33,12 @@ class UserAR extends \yii\db\ActiveRecord
         ];
     }
 
+    public function validate()
+    {
+        $this->password = md5($this->username.$this->password);
+        return true;
+    }
+
     /**
      * @inheritdoc
      */
