@@ -56,6 +56,16 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
         return null;
     }
 
+    public static function apiValidate($name, $password) {
+        $user = User::findByUsername($name);
+        if ($user) {
+            if ($user->validatePassword($password)) {
+                return md5($name.$password.'api_secret_salt');
+            }
+        }
+        return null;
+    }
+
     /**
      * @inheritdoc
      */
