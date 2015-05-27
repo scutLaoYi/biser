@@ -47,4 +47,13 @@ class Record extends \yii\db\ActiveRecord
             'post_id' => 'Post ID',
         ];
     }
+
+    public static function fetchWithPage($post_id, $page) 
+    {
+        $query = Record::find()->where(['post_id'=>$post_id]);
+        $models = $query->offset($page)->one();
+        return $models->attributes;
+
+    }
+    
 }

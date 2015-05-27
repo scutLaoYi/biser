@@ -56,14 +56,29 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
         return null;
     }
 
+    private static function generateToken($user) {
+        return md5($user->username.$user->password.'api_secret_salt');
+    }
+
     public static function apiValidate($name, $password) {
         $user = User::findByUsername($name);
         if ($user) {
             if ($user->validatePassword($password)) {
-                return md5($name.$password.'api_secret_salt');
+                return User::generateToken($user);
             }
         }
         return null;
+    }
+
+    public static function apiTokenValidate($username, $token) {
+        $user = User::findByUsername($username);
+        if ($user) {
+            $realToken = User::generateToken($user);
+            if ($realToken === $token) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
