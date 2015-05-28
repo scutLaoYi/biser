@@ -10,6 +10,7 @@ use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * PostController implements the CRUD actions for Post model.
@@ -23,6 +24,16 @@ class FeedController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                 ],
+            ],
+            'access' => [
+                'class'=>\yii\filters\AccessControl::className(),
+                'only'=>['index',],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ]
             ],
         ];
     }
@@ -58,6 +69,7 @@ class FeedController extends Controller
         $models = $query->offset($pages->offset)
             ->one();
 
+        Yii::info('[Feed][Index] User:'.Yii::$app->user->id.' post:'.$post_id.' page:'.$pages->offset, 'biser\feed');
         return $this->render('index', [
             'model' => $models,
             'postList' => $postList,
