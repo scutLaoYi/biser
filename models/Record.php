@@ -53,7 +53,20 @@ class Record extends \yii\db\ActiveRecord
         $query = Record::find()->where(['post_id'=>$post_id]);
         $models = $query->offset($page)->one();
         return $models->attributes;
+    }
 
+    public static function fetchSummary($postList)
+    {
+        $records = [];
+        foreach ($postList as $post)
+        {
+            $record = Record::find()->where(['post_id'=>$post['id']])->asarray()->one();
+            $record['post_name'] = $post['name'];
+            $records[]=$record;
+        }
+
+        return $records;
+        
     }
     
 }

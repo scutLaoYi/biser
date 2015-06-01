@@ -9,6 +9,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\RssParser;
 use app\models\ContactForm;
+use app\models\Post;
+use app\models\Record;
 
 class SiteController extends Controller
 {
@@ -50,7 +52,11 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $summaryPostList = Post::getSummaryPost();
+        $records = Record::fetchSummary($summaryPostList);
+        return $this->render('index',
+            ['summary'=>$records,]
+        );
     }
 
     public function actionLogin()

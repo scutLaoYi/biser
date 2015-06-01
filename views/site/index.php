@@ -13,36 +13,15 @@ $this->title = 'Welcome To Biser';
     <div class="body-content">
 
         <div class="row">
+<?php foreach($summary as $s) {?>
             <div class="col-lg-4">
-                <h2>旧华网</h2>
+            <h2><?php echo $s['title'];?></h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+            <p><?php echo $s['post_name']; ?></p>
 
-                <p><a class="btn btn-default" href="http://www.scutlaoyi.tk">Read more</a></p>
+            <p><a class="btn btn-default" href="./feed/index?post_id=<?php echo $s['post_id']; ?>">Read more</a></p>
             </div>
-            <div class="col-lg-4">
-                <h2>加州时报</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.scutlaoyi.tk">Read more</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>平壤之音</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.scutlaoyi.tk">Read more</a></p>
-            </div>
+<?php } ?>
         </div>
 
     </div>

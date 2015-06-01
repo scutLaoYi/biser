@@ -48,4 +48,11 @@ class Post extends \yii\db\ActiveRecord
             'type_id' => 'Type ID',
         ];
     }
+
+    public static function getSummaryPost()
+    {
+        $summarySize = 3;
+        $postARs = Post::findBySql("select id, name from posts limit $summarySize")->asarray()->all();
+        return $postARs;
+    }
 }
