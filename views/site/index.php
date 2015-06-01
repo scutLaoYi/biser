@@ -19,7 +19,7 @@ $this->title = 'Welcome To Biser';
 
             <p><?php echo $s['post_name']; ?></p>
 
-            <p><a class="btn btn-default" href="./feed/index?post_id=<?php echo $s['post_id']; ?>">Read more</a></p>
+            <p><a class="btn btn-default" href="/feed/index?post_id=<?php echo $s['post_id']; ?>">Read more</a></p>
             </div>
 <?php } ?>
         </div>
