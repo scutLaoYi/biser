@@ -48,6 +48,6 @@ class FetchController extends Controller
 
     private function readAllPostFromDB()
     {
-        return Post::find()->where(['type'=>1])->all();
+        return Post::find()->where(['type'=>0])->all();
     }
 }
